@@ -7,11 +7,13 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
+    "sourceMap": true,
     "types": [],
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

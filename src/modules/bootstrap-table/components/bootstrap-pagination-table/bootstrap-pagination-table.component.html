@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-between">
+  <div *ngTemplateOutlet="tTotal; context: {$implicit: true}"></div>
+  <div *ngTemplateOutlet="tPagination"></div>
+</div>
+<div style="width: 100%;overflow: auto">
+  <table [ngClass]="tableClass"
+         *ngIf="isNotEmpty else emptyTable">
+    <thead>
+    <ng-content select="[thead]"></ng-content>
+    </thead>
+    <tbody>
+    <ng-content></ng-content>
+    </tbody>
+    <tfoot>
+    <ng-content select="[tfoot]"></ng-content>
+    </tfoot>
+  </table>
+</div>
+<div class="d-flex justify-content-between">
+  <div *ngTemplateOutlet="tPagination"></div>
+  <div *ngTemplateOutlet="tTotal"></div>
+</div>
+<ng-template #emptyTable>
+  <table class="table table-striped">
+    <tbody>
+    <tr class="text-center">
+      <td colspan="20">
+        <h4 class="m-0">無資料</h4>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #tTotal let-showRefreshButton>
+  <div class="font-medium-2">
+    總計：
+    <span [ngClass]="totalClass">
+      {{ getTotal()|number}}
+    </span>
+    筆資料
+    <ng-container *ngIf="isNotEmpty">
+      ，每頁顯示
+      <span [ngClass]="totalClass">
+        {{ perPage }}
+      </span>筆資料
+    </ng-container>
+    <button *ngIf="showRefreshButton" (click)="onSearch()"
+            [ngClass]="reloadButtonClass">
+      <em [ngClass]="reloadButtonIconClass"></em>
+    </button>
+  </div>
+</ng-template>
+
+
+<ng-template #tPagination>
+  <div class="p-2">
+    <ngb-pagination [(page)]="currentPage" [pageSize]="perPage" [collectionSize]="getTotal()"
+                    [rotate]="true"
+                    (pageChange)="onChangePage($event)" [maxSize]="5" *ngIf="isNotEmpty">
+    </ngb-pagination>
+  </div>
+</ng-template>

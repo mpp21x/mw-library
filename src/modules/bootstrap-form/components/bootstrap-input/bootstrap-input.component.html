@@ -1,0 +1,13 @@
+<fieldset class="form-group" *ngIf="this.getControl()">
+  <label mwRequiredLabel [isRequired]="showLabelIsRequired()">{{labelText}}</label>
+  <input [type]="type"
+         class="form-control"
+         [formControl]="this.getControl()"
+         [maxLength]="maxLength"
+         [ngClass]="{'is-invalid':showIsInvalid}"
+         [placeholder]="placeholder">
+  <span class="invalid-feedback"
+        *ngIf="showIsInvalid">
+          {{errorMessages}}
+  </span>
+</fieldset>

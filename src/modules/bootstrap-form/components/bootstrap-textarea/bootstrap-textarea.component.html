@@ -1,0 +1,14 @@
+<fieldset *ngIf="this.getControl()">
+  <label mwRequiredLabel [isRequired]="showLabelIsRequired()">{{labelText}}</label>
+  <textarea class="form-control"
+            [rows]="rows"
+            [formControl]="getControl()"
+            [maxLength]="maxLength"
+            [ngClass]="{'is-invalid':showIsInvalid}"
+            [placeholder]="placeholder"></textarea>
+  <div class="invalid-feedback"
+       *ngIf="showIsInvalid">
+    {{errorMessages}}
+  </div>
+</fieldset>
+

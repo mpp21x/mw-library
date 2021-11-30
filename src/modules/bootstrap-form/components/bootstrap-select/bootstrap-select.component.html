@@ -1,0 +1,21 @@
+<fieldset class="form-group">
+  <label mwRequiredLabel [isRequired]="showLabelIsRequired()">{{labelText}}</label>
+  <select
+    class="form-control"
+    [ngClass]="{'is-invalid':showIsInvalid}"
+    [formControl]="getControl()"
+    [multiple]="isMultiple"
+    (change)="changeSelect.emit($event)"
+    [size]="size"
+    [required]="showLabelIsRequired()">
+    <option *ngFor="let option of options"
+            [selected]="isSelected(option)"
+            [value]="option.value">
+      {{ option.text }}
+    </option>
+  </select>
+  <div class="invalid-feedback"
+         *ngIf="showIsInvalid">
+    {{errorMessages}}
+  </div>
+</fieldset>

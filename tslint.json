@@ -4,14 +4,22 @@
     "directive-selector": [
       true,
       "attribute",
-      "lib",
+      "mw",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "lib",
+      "mw",
       "kebab-case"
+    ],
+    "typedef": [
+      false,
+      "call-signature"
+    ],
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
     ]
   }
 }
