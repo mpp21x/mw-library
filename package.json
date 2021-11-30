@@ -1,5 +1,5 @@
 {
-  "name": "mw-library",
+  "name": "mw2021-library",
   "version": "0.0.01",
   "peerDependencies": {
     "@angular/common": ">=11.0.0",
