@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {BaseComponent} from "../base.component";
+import {BaseComponent} from '../base.component';
 
 @Component({
   selector: 'mw-bootstrap-input',

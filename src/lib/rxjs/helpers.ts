@@ -1,12 +1,12 @@
 import {Subscription} from 'rxjs';
 import * as R from 'ramda';
 
-export interface UnsubscriptibeAble {
+export interface Unsubscribable {
   unsubscribe: () => void;
 }
 
 
-export function cleanSubscriptionToUnsub(subscriptions: UnsubscriptibeAble[]) {
+export function cleanSubscriptionToUnsub(subscriptions: Unsubscribable[]) {
   if (!R.is(Array, subscriptions)) {
     return;
   }

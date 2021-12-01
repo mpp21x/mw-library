@@ -8,6 +8,8 @@ import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.modul
 import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 import {FormModule} from './modules/form/form.module';
 import {BootstrapPaginationTableComponent} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
+import {EventListenerModule} from './modules/event-listener/event-listener.module';
+import {SpinnerModule} from './modules/spinner/spinner.module';
 
 
 export {checkIsIpv4} from './lib/check/check-is-ipv4';
@@ -76,6 +78,13 @@ export {
   BootstrapTextareaComponent
 } from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';
 export {BaseComponent} from './modules/bootstrap-form/components/base.component';
+export {
+  BootstrapInputSelectComponent
+} from './modules/bootstrap-form/components/bootstrap-input-select/bootstrap-input-select.component';
+export {
+  BootstrapDatetimePickerComponent
+} from './modules/bootstrap-form/components/bootstrap-datetime-picker/bootstrap-datetime-picker.component';
+export {BootstrapSwapSelectComponent} from './modules/bootstrap-form/components/bootstrap-swap-select/bootstrap-swap-select.component';
 
 export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 /** Bootstrap Table */
@@ -89,13 +98,19 @@ export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.mo
 export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
 export {ObservableSpinnerWrapper} from './modules/spinner/service/observable-spinner-wrapper.service';
 
+/** Event Listener */
+export {GlobalClickEventListener} from './modules/event-listener/lib/global-click-event-listener';
+export {PopupWindow} from './modules/event-listener/lib/popup-window';
+
 
 const MODULES = [
   FormModule,
   BootstrapFormModule,
-  BootstrapTableModule
+  BootstrapTableModule,
+  SpinnerModule,
+  EventListenerModule
 ];
 
 @NgModule({imports: MODULES, exports: MODULES})
-export class MattTwModule {
+export class MwModule {
 }

@@ -1,0 +1,32 @@
+<label class="input-select w-100 mb-0" #tInputSelect>
+  <input type="text"
+         style="height: 40px"
+         class="form-control"
+         [placeholder]="placeholder"
+         [(ngModel)]="inputFilter"
+         (click)="switch()"
+         (ngModelChange)="filterOptions()"
+         (keydown.arrowUp)="selectOptionByKeyArrow($event.code)"
+         (keydown.arrowDown)="selectOptionByKeyArrow($event.code)"
+         (keydown.enter)="enterSelection()"
+         (keydown.escape)="collapse()">
+  <em class="fa fa-angle-down"></em>
+
+  <div class="input-select__dropdown"
+       #tDropdown
+       *ngIf="isExpand">
+    <ul>
+      <li *ngIf="!options.length"
+          [ngClass]="'input-select__current-option'">
+        <em class="fas fa-check"></em>無選項
+      </li>
+      <ng-container *ngFor="let option of displayOptions;let i = index">
+        <li [ngClass]="{'input-select__current-option': i === currentOptionIndex}"
+            (mouseover)="currentOptionIndex = i"
+            (click)="clickOption(option, $event)">
+          <em class="fas fa-check" *ngIf="isChecked.has(option)"></em>{{option}}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</label>

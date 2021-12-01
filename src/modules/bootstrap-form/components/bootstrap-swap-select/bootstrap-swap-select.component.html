@@ -1,0 +1,29 @@
+<div class="d-flex align-items-center mb-3">
+  <ng-content select="[title]"></ng-content>
+  <label class="mb-0 ml-2 w-25">
+    <input type="text"
+           class="form-control form-control-sm"
+           style="background-color: #3E3E3E"
+           [placeholder]="'快速搜尋選項'"
+           [(ngModel)]="nameFilterInput"
+           (ngModelChange)="filterName.emit(nameFilterInput);">
+  </label>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <ng-content select="[selectableText]"></ng-content>
+    </div>
+    <div class="selectBlock">
+      <ng-content select="[selectable]"></ng-content>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <ng-content select="[selectedText]"></ng-content>
+    </div>
+    <div class="selectBlock">
+      <ng-content select="[selected]"></ng-content>
+    </div>
+  </div>
+</div>

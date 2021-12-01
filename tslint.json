@@ -20,6 +20,10 @@
     "variable-name": [
       true,
       "allow-leading-underscore"
+    ],
+    "quotemark": [
+      true,
+      "single"
     ]
   }
 }
