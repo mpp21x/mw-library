@@ -8,8 +8,8 @@ import {BootstrapTextareaComponent} from './components/bootstrap-textarea/bootst
 import {BaseComponent} from './components/base.component';
 import {BootstrapInputSelectComponent} from './components/bootstrap-input-select/bootstrap-input-select.component';
 import {BootstrapDatetimePickerComponent} from './components/bootstrap-datetime-picker/bootstrap-datetime-picker.component';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap/tooltip/tooltip.module';
-import {NgbDatepickerModule, NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
+
+import {NgbDatepickerModule, NgbTimepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/bootstrap-swap-select.component';
 
 
