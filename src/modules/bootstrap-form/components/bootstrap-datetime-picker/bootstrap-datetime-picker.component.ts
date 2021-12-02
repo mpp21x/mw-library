@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -31,7 +30,7 @@ import {fillZeroWhenLessThanTen} from '../../../../lib/utils/fill-zero-when-less
   styleUrls: ['./bootstrap-datetime-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BootstrapDatetimePickerComponent extends PopupWindow implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class BootstrapDatetimePickerComponent extends PopupWindow implements OnInit, OnChanges, OnDestroy {
 
   @Input() timestamp = '';
   @Input() format: 'YYYY-MM-DD HH:mm:ss' | 'YYYY-MM-DD' = 'YYYY-MM-DD HH:mm:ss';
@@ -86,9 +85,6 @@ export class BootstrapDatetimePickerComponent extends PopupWindow implements OnI
     }
   }
 
-  ngAfterViewInit(): void {
-    this.subscribeClick(this.elementRef);
-  }
 
   ngOnDestroy(): void {
     cleanSubscriptionToUnsub(this.subscriptions);
@@ -122,13 +118,20 @@ export class BootstrapDatetimePickerComponent extends PopupWindow implements OnI
     this.changeDetectorRef.markForCheck();
   }
 
+  protected subscribeClick(element: ElementRef<Element>) {
+    this.targetElement = element;
+    cleanSubscriptionToUnsub([this.subscription]);
+    this.subscription = this.listener.getObservable()
+      .pipe(filter(this.isNeedToCollapseFn()))
+      .subscribe(($event) => this.collapse($event));
+  }
+
   protected isNeedToCollapseFn() {
     return (event: MouseEvent) => {
       const node = event.target as Node | Element;
       return event instanceof MouseEvent &&
         this.isExpand &&
-        !this.elementRef.nativeElement.contains(node) &&
-        !(node.parentNode as Element).innerHTML.includes('ngx-spinner-overlay');
+        !this.elementRef.nativeElement.contains(node);
     };
   }
 
@@ -136,5 +139,10 @@ export class BootstrapDatetimePickerComponent extends PopupWindow implements OnI
   @HostListener('document:keydown.escape', ['$event'])
   keydownToCollapse() {
     this.collapse();
+  }
+
+  collapse(event?: MouseEvent){
+    super.collapse(event);
+    this.changeDetectorRef.markForCheck();
   }
 }

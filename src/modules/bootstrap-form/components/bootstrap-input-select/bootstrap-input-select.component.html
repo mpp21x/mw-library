@@ -4,7 +4,7 @@
          class="form-control"
          [placeholder]="placeholder"
          [(ngModel)]="inputFilter"
-         (click)="switch()"
+         (click)="switch($event)"
          (ngModelChange)="filterOptions()"
          (keydown.arrowUp)="selectOptionByKeyArrow($event.code)"
          (keydown.arrowDown)="selectOptionByKeyArrow($event.code)"

@@ -50,28 +50,31 @@ export class BootstrapInputSelectComponent extends PopupWindow implements OnChan
   }
 
   selectOptionByKeyArrow(type: 'ArrowUp' | 'ArrowDown') {
-    if (type === 'ArrowDown') {
+    if (type === 'ArrowDown' && !this.isExpand) {
       this.expand();
-    }
+    } else if (this.isExpand) {
+      if (type === 'ArrowUp' && this.currentOptionIndex > 0) {
+        this.currentOptionIndex -= 1;
+      } else if (type === 'ArrowDown' && this.currentOptionIndex < this.displayOptions.length - 1) {
+        this.currentOptionIndex += 1;
+      }
 
-    if (type === 'ArrowUp' && this.currentOptionIndex > 0) {
-      this.currentOptionIndex -= 1;
-    } else if (type === 'ArrowDown' && this.currentOptionIndex < this.displayOptions.length - 1) {
-      this.currentOptionIndex += 1;
-    }
+      if (this.displayOptions.length <= 10 || !this.tDropdown) {
+        return;
+      }
 
-    if (this.displayOptions.length <= 10 || !this.tDropdown) {
-      return;
-    }
-
-    if (this.currentOptionIndex < Math.floor(this.tDropdown.nativeElement.scrollTop / 30)) {
-      this.tDropdown.nativeElement.scrollTop -= 30;
-    } else if (this.currentOptionIndex > Math.floor(this.tDropdown.nativeElement.scrollTop / 30) + 9) {
-      this.tDropdown.nativeElement.scrollTop += 30;
+      if (this.currentOptionIndex < Math.floor(this.tDropdown.nativeElement.scrollTop / 30)) {
+        this.tDropdown.nativeElement.scrollTop -= 30;
+      } else if (this.currentOptionIndex > Math.floor(this.tDropdown.nativeElement.scrollTop / 30) + 9) {
+        this.tDropdown.nativeElement.scrollTop += 30;
+      }
     }
   }
 
   enterSelection() {
+    if (!this.isExpand) {
+      return;
+    }
     const option = this.displayOptions[this.currentOptionIndex];
     this.inputFilter = this.inputFilter === option ? '' : option;
     this.selectOptionAndEmit(option);

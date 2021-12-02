@@ -15,19 +15,19 @@ export class PopupWindow {
   ) {
   }
 
-  switch() {
-    this.isExpand ? this.collapse() : this.expand();
+  switch(event?: Event) {
+    this.isExpand ? this.collapse(event) : this.expand(event);
   }
 
-  expand(event?: MouseEvent) {
-    if (event instanceof MouseEvent) {
+  expand(event?: Event) {
+    if (event instanceof Event) {
       event.stopPropagation();
     }
     this._isExpand = true;
   }
 
-  collapse(event?: MouseEvent) {
-    if (event instanceof MouseEvent) {
+  collapse(event?: Event) {
+    if (event instanceof Event) {
       event.stopPropagation();
     }
 
@@ -46,14 +46,13 @@ export class PopupWindow {
     cleanSubscriptionToUnsub([this.subscription]);
     this.subscription = this.listener.getObservable()
       .pipe(filter(this.isNeedToCollapseFn()))
-      .subscribe(() => this.collapse());
+      .subscribe(($event) => this.collapse($event));
   }
 
   protected isNeedToCollapseFn() {
-    return (event: MouseEvent) => {
-      console.log('isNeedToCollapseFn');
+    return (event: Event) => {
       const node = event.target as Node | Element;
-      return event instanceof MouseEvent &&
+      return event instanceof Event &&
         this._isExpand &&
         this.targetElement &&
         !this.targetElement.nativeElement.contains(node);
