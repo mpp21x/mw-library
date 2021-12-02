@@ -95,10 +95,12 @@ export {
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 
 /** Spinner */
+export {SpinnerModule} from './modules/spinner/spinner.module';
 export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
 export {ObservableSpinnerWrapper} from './modules/spinner/service/observable-spinner-wrapper.service';
 
 /** Event Listener */
+export {EventListenerModule} from './modules/event-listener/event-listener.module';
 export {GlobalClickEventListener} from './modules/event-listener/lib/global-click-event-listener';
 export {PopupWindow} from './modules/event-listener/lib/popup-window';
 
@@ -108,7 +110,7 @@ const MODULES = [
   BootstrapFormModule,
   BootstrapTableModule,
   SpinnerModule,
-  EventListenerModule
+  EventListenerModule,
 ];
 
 @NgModule({imports: MODULES, exports: MODULES})

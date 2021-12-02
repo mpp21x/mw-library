@@ -1,12 +1,12 @@
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {ElementRef} from '@angular/core';
-import {GlobalClickEventListener} from "./global-click-event-listener";
-import {cleanSubscriptionToUnsub} from "../../../lib/rxjs/helpers";
+import {GlobalClickEventListener} from './global-click-event-listener';
+import {cleanSubscriptionToUnsub} from '../../../lib/rxjs/helpers';
 
 export class PopupWindow {
 
-  protected _isExpand = false
+  protected _isExpand = false;
   protected targetElement: ElementRef<Element>;
   protected subscription: Subscription;
 
@@ -51,6 +51,7 @@ export class PopupWindow {
 
   protected isNeedToCollapseFn() {
     return (event: MouseEvent) => {
+      console.log('isNeedToCollapseFn');
       const node = event.target as Node | Element;
       return event instanceof MouseEvent &&
         this._isExpand &&
