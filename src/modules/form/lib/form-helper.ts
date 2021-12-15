@@ -8,7 +8,7 @@ import {tap} from 'rxjs/operators';
 import {FormEnding} from './form-ending';
 import {NgErrorMessager} from './plugin/ng-error-messager';
 import {StatusCode} from '../../../lib/http/status-code';
-import {getNestedProp} from "../../../lib/utils/nested-prop-is-exists";
+import {getNestedProp} from '../../../lib/utils/get-nested-prop';
 
 
 export class FormHelper {

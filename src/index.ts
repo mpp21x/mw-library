@@ -13,8 +13,6 @@ import {SpinnerModule} from './modules/spinner/spinner.module';
 
 
 export {checkIsIpv4} from './lib/check/check-is-ipv4';
-export {checkIsMatchInOneTypes} from './lib/check/check-is-match-in-one-types';
-export {checkIsOverOneDay} from './lib/check/check-is-over-one-day';
 export {checkIsUrl} from './lib/check/check-is-url';
 export {checkStringIsDate} from './lib/check/check-string-is-date';
 /** date */
@@ -37,7 +35,7 @@ export {fillZeroWhenLessThanTen} from './lib/utils/fill-zero-when-less-than-ten'
 export {getLastOne} from './lib/utils/get-last-one';
 export {isEmptyExceptZero} from './lib/utils/is-empty-except-zero';
 export {isNilOrEmpty} from './lib/utils/is-nil-or-empty';
-export {getNestedProp} from './lib/utils/nested-prop-is-exists';
+export {getNestedProp} from './lib/utils/get-nested-prop';
 export {nestedPropIsExists} from './lib/utils/nested-prop-is-exists';
 export {numberFormat} from './lib/utils/number-format';
 export {prettyJsonString} from './lib/utils/pretty-json-string';
