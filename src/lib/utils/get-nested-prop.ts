@@ -1,3 +1,6 @@
+/**
+ * @deprecated 改用 ramda path
+ */
 export function getNestedProp<T>(nestedProperty: string, target: unknown, defaultValue: T = null) {
   const restOfPropertyNames = nestedProperty.split('.');
   const length = restOfPropertyNames.length;

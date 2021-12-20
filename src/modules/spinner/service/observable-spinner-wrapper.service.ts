@@ -9,20 +9,20 @@ import {CustomSpinner} from '../lib/custom-spinner';
 })
 export class ObservableSpinnerWrapper {
 
-  private _customSpinner: CustomSpinner;
+  protected _customSpinner: CustomSpinner;
 
   constructor(protected readonly spinner: NgxSpinnerService) {
   }
 
-  setObservableSpinner<T = any>(observable: Observable<T>) {
+  setObservableSpinner<T>(observable: Observable<T>) {
     return this.innerConfig(observable, false);
   }
 
-  setObservableCustomSpinner<T = any>(observable: Observable<T>) {
+  setObservableCustomSpinner<T>(observable: Observable<T>) {
     return this.innerConfig(observable, true);
   }
 
-  private innerConfig<T>(observable: Observable<T>, isCustomSpinner: boolean) {
+  protected innerConfig<T>(observable: Observable<T>, isCustomSpinner: boolean) {
     const spinner = this.getSpinner(isCustomSpinner);
     spinner.show();
     const endFn = () => setTimeout(() => spinner.hide(), 500);
@@ -32,7 +32,7 @@ export class ObservableSpinnerWrapper {
     }));
   }
 
-  private getSpinner(isCustom: boolean) {
+  protected getSpinner(isCustom: boolean) {
     return isCustom ? this._customSpinner : this.spinner;
   }
 
