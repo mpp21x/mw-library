@@ -22,6 +22,10 @@ export class ObservableSpinnerWrapper {
     return this.innerConfig(observable, true);
   }
 
+  setCustomSpinner(spinner: CustomSpinner = null) {
+    this._customSpinner = spinner;
+  }
+
   protected innerConfig<T>(observable: Observable<T>, isCustomSpinner: boolean) {
     const spinner = this.getSpinner(isCustomSpinner);
     spinner.show();
@@ -34,9 +38,5 @@ export class ObservableSpinnerWrapper {
 
   protected getSpinner(isCustom: boolean) {
     return isCustom ? this._customSpinner : this.spinner;
-  }
-
-  setCustomSpinner(spinner: CustomSpinner = null) {
-    this._customSpinner = spinner;
   }
 }
