@@ -66,6 +66,7 @@ export {ValidatorUrl} from './modules/form/validators/validator-url';
 export {ValidatorsCheckDate} from './modules/form/validators/validators-check-date';
 
 export {FormModule} from './modules/form/form.module';
+export {FormSubmitter} from './modules/form/service/form-submitter.service';
 /** Bootstrap Form */
 export {SelectOption} from './modules/bootstrap-form/lib/bootstrap-select/select-option';
 export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
