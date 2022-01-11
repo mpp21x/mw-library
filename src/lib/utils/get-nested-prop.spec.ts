@@ -2,21 +2,21 @@ import {getNestedProp} from './get-nested-prop';
 
 describe('get nested property', () => {
   it('exists', () => {
-    const expectedValue = 'no';
+    const expected = 'no';
     const sut = {
       a: {
         b: {
-          c: expectedValue
+          c: expected
         }
       }
     };
 
-    expect(getNestedProp('a.b.c', sut)).toEqual(expectedValue);
+    expect(getNestedProp('a.b.c', sut)).toEqual(expected);
   });
   it('exists', () => {
-    const expectedValue = undefined;
+    const expected = undefined;
     const sut = {};
 
-    expect(getNestedProp('a.b.c', sut)).toEqual(expectedValue);
+    expect(getNestedProp('a.b.c', sut)).toEqual(expected);
   });
 });

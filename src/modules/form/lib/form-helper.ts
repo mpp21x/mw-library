@@ -45,6 +45,7 @@ export class FormHelper {
     this.isStopSubmit = true;
     this.httpErrorMessager.clean();
     this.loading.start();
+    return this;
   }
 
   async endLoading(result: boolean, msg: string, detailMsg = '') {
