@@ -1,15 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {showFormErrors} from 'mw2021-library';
 import {FormHelper} from '../lib/form-helper';
+import {showFormErrors} from '../../../ng-lib/form/show-form-errors';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FormSubmitter {
 
-  private _subject = new Subject();
+  protected _subject = new Subject();
 
   constructor() {
   }
