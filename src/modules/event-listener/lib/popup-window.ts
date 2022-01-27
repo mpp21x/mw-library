@@ -2,7 +2,7 @@ import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {ElementRef} from '@angular/core';
 import {GlobalClickEventListener} from './global-click-event-listener';
-import {cleanSubscriptionToUnsub} from '../../../lib/rxjs/helpers';
+import {unsubscribe} from '../../../lib/rxjs/unsubscribe';
 
 export class PopupWindow {
 
@@ -43,7 +43,7 @@ export class PopupWindow {
    **/
   protected subscribeClick(element: ElementRef<Element>) {
     this.targetElement = element;
-    cleanSubscriptionToUnsub([this.subscription]);
+    unsubscribe([this.subscription]);
     this.subscription = this.listener.getObservable()
       .pipe(filter(this.isNeedToCollapseFn()))
       .subscribe(($event) => this.collapse($event));

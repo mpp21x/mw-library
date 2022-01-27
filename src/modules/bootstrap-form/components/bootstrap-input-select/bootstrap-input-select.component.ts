@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {PopupWindow} from '../../../event-listener/lib/popup-window';
 import {GlobalClickEventListener} from '../../../event-listener/lib/global-click-event-listener';
-import {cleanSubscriptionToUnsub} from '../../../../lib/rxjs/helpers';
+import {unsubscribe} from '../../../../lib/rxjs/unsubscribe';
 
 @Component({
   selector: 'mw-bootstrap-input-select',
@@ -38,7 +38,7 @@ export class BootstrapInputSelectComponent extends PopupWindow implements OnChan
   }
 
   ngOnDestroy(): void {
-    cleanSubscriptionToUnsub([this.subscription]);
+    unsubscribe([this.subscription]);
   }
 
   clickOption(option: string, $event) {

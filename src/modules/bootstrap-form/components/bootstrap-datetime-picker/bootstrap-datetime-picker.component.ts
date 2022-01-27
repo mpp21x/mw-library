@@ -21,8 +21,8 @@ import {filter} from 'rxjs/operators';
 import {PopupWindow} from '../../../event-listener/lib/popup-window';
 import {GlobalClickEventListener} from '../../../event-listener/lib/global-click-event-listener';
 import {ValidatorsCheckDate} from '../../../form/validators/validators-check-date';
-import {cleanSubscriptionToUnsub} from '../../../../lib/rxjs/helpers';
 import {fillZeroWhenLessThanTen} from '../../../../lib/utils/fill-zero-when-less-than-ten';
+import {unsubscribe} from '../../../../lib/rxjs/unsubscribe';
 
 @Component({
   selector: 'mw-bootstrap-datetime-picker',
@@ -87,7 +87,7 @@ export class BootstrapDatetimePickerComponent extends PopupWindow implements OnI
 
 
   ngOnDestroy(): void {
-    cleanSubscriptionToUnsub(this.subscriptions);
+    unsubscribe(this.subscriptions);
   }
 
   pickDatetime() {
@@ -120,7 +120,7 @@ export class BootstrapDatetimePickerComponent extends PopupWindow implements OnI
 
   protected subscribeClick(element: ElementRef<Element>) {
     this.targetElement = element;
-    cleanSubscriptionToUnsub([this.subscription]);
+    unsubscribe([this.subscription]);
     this.subscription = this.listener.getObservable()
       .pipe(filter(this.isNeedToCollapseFn()))
       .subscribe(($event) => this.collapse($event));

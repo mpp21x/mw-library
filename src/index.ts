@@ -27,7 +27,8 @@ export {StatusCode} from './lib/http/status-code';
 /** paginator */
 export {Paginator} from './lib/paginator/paginator';
 /** rxjs */
-export {cleanSubscriptionToUnsub} from './lib/rxjs/helpers';
+export {UnsubscribeMap} from './lib/rxjs/unsubscribe-map';
+export {unsubscribe} from './lib/rxjs/unsubscribe';
 /** utils */
 export {escapeHtml} from './lib/utils/escape-html';
 export {fillZeroWhenLessThanTen} from './lib/utils/fill-zero-when-less-than-ten';
@@ -93,7 +94,7 @@ export {
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 
 /** Spinner */
-export {ObservableSpinnerWrapper} from './modules/spinner/service/observable-spinner-wrapper.service';
+export {SpinnerService} from './modules/spinner/service/spinner.service';
 export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
 export {SpinnerModule} from './modules/spinner/spinner.module';
 
