@@ -3,7 +3,6 @@
  */
 
 /** check */
-import {NgModule} from '@angular/core';
 import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 import {FormModule} from './modules/form/form.module';
@@ -94,24 +93,13 @@ export {
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 
 /** Spinner */
-export {SpinnerModule} from './modules/spinner/spinner.module';
-export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
 export {ObservableSpinnerWrapper} from './modules/spinner/service/observable-spinner-wrapper.service';
+export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
+export {SpinnerModule} from './modules/spinner/spinner.module';
 
 /** Event Listener */
-export {EventListenerModule} from './modules/event-listener/event-listener.module';
-export {GlobalClickEventListener} from './modules/event-listener/lib/global-click-event-listener';
 export {PopupWindow} from './modules/event-listener/lib/popup-window';
+export {GlobalClickEventListener} from './modules/event-listener/lib/global-click-event-listener';
+export {EventListenerModule} from './modules/event-listener/event-listener.module';
 
-
-const MODULES = [
-  FormModule,
-  BootstrapFormModule,
-  BootstrapTableModule,
-  SpinnerModule,
-  EventListenerModule,
-];
-
-@NgModule({imports: MODULES, exports: MODULES})
-export class MwModule {
-}
+export * from './mw-module';

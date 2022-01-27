@@ -1,6 +1,4 @@
-import * as moment_ from 'moment';
-
-const moment = moment_;
+import moment from 'moment';
 
 export function oneDayPeriod(date: moment.Moment): [string, string] {
   return [
