@@ -2,7 +2,7 @@
  * Public API Surface of mw2021-library
  */
 
-/** check */
+
 import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 import {FormModule} from './modules/form/form.module';
@@ -11,6 +11,10 @@ import {EventListenerModule} from './modules/event-listener/event-listener.modul
 import {SpinnerModule} from './modules/spinner/spinner.module';
 
 
+/** Laravel */
+export {PaginatorResponse} from '../src/laravel/paginator-response';
+
+/** check */
 export {checkIsIpv4} from './lib/check/check-is-ipv4';
 export {checkIsUrl} from './lib/check/check-is-url';
 export {checkStringIsDate} from './lib/check/check-string-is-date';
