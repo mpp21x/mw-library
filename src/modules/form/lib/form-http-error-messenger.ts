@@ -1,7 +1,7 @@
 import {FormGroup} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 
-export interface FormHttpErrorMessager {
+export interface FormHttpErrorMessenger {
 
   getMessage(control: string): string[];
 

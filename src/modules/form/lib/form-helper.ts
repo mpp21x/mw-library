@@ -1,15 +1,13 @@
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import * as R from 'ramda';
-import {FormLoading} from './form-loading';
-import {FormHttpErrorMessager} from './form-http-error-messager';
+import {LoadingController} from '../../loading/lib/loading-controller';
+import {FormHttpErrorMessenger} from './form-http-error-messenger';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {FormEnding} from './form-ending';
-import {NgErrorMessager} from './plugin/ng-error-messager';
+import {NgErrorMessenger} from './plugin/ng-error-messenger';
 import {StatusCode} from '../../../lib/http/status-code';
-import {getNestedProp} from '../../../lib/utils/get-nested-prop';
-
 
 export class FormHelper {
   defaultErrorMessage = '儲存失敗';
@@ -17,10 +15,10 @@ export class FormHelper {
   protected isStopSubmit = false;
 
   constructor(
-    protected readonly loading: FormLoading,
+    protected readonly loading: LoadingController,
     protected readonly ending: FormEnding<unknown>,
-    protected readonly ngErrorMessager: NgErrorMessager,
-    protected readonly httpErrorMessager: FormHttpErrorMessager,
+    protected readonly ngErrorMessenger: NgErrorMessenger,
+    protected readonly httpErrorMessenger: FormHttpErrorMessenger,
     protected readonly _form: FormGroup
   ) {
   }
@@ -31,19 +29,18 @@ export class FormHelper {
       return true;
     }
     if (this._form.invalid) {
-      this.endLoading(false, this.defaultUnableSubmitMessage);
+      this.endLoading(false, this.defaultUnableSubmitMessage).then();
       return true;
     }
     return false;
   }
-
 
   /**
    * 常用於清除預設值，以及開啟載入畫面
    */
   beforeSubmit() {
     this.isStopSubmit = true;
-    this.httpErrorMessager.clean();
+    this.httpErrorMessenger.clean();
     this.loading.start();
     return this;
   }
@@ -78,7 +75,7 @@ export class FormHelper {
   }
 
   setFormErrorByResponse(res: HttpErrorResponse): void {
-    this.httpErrorMessager.setMessagesFromHttp(this._form, res);
+    this.httpErrorMessenger.setMessagesFromHttp(this._form, res);
   }
 
   controlIsInvalid(controlName: string, isInside = false): boolean {
@@ -100,10 +97,10 @@ export class FormHelper {
     if (!this.controlIsInvalid(controlName)) {
       return [];
     }
-    let errorMessages = this.ngErrorMessager.getMessagesFromControlErrors(
+    let errorMessages = this.ngErrorMessenger.getMessagesFromControlErrors(
       this.getInnerControl(controlName).errors
     );
-    errorMessages = errorMessages.concat(this.httpErrorMessager.getMessage(controlName));
+    errorMessages = errorMessages.concat(this.httpErrorMessenger.getMessage(controlName));
 
     return errorMessages;
   }
@@ -132,14 +129,14 @@ export class FormHelper {
           detailMessage = '表單輸入不允許的數值，請修改表單';
           break;
         default:
-          if (getNestedProp('errors.message', res)) {
+          if (R.path(['errors', 'message'], res)) {
             detailMessage = res.error.message;
           } else {
             detailMessage = '連線異常！請稍後再試';
           }
           break;
       }
-      this.endLoading(false, this.defaultErrorMessage, detailMessage);
+      this.endLoading(false, this.defaultErrorMessage, detailMessage).then();
       return;
     };
   }

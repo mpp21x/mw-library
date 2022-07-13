@@ -1,8 +1,8 @@
-import {FormHttpErrorMessager} from '../form-http-error-messager';
+import {FormHttpErrorMessenger} from '../form-http-error-messenger';
 import {FormGroup} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 
-export class LaravelHttpErrorMessage implements FormHttpErrorMessager {
+export class LaravelHttpErrorMessenger implements FormHttpErrorMessenger {
   protected map: { [key: string]: string[] } = {};
 
   clean(): void {

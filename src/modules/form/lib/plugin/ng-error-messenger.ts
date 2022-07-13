@@ -1,6 +1,6 @@
-import {FormNgErrorMessager} from '../form-ng-error-messager';
+import {FormNgErrorMessenger} from '../form-ng-error-messenger';
 
-export class NgErrorMessager implements FormNgErrorMessager {
+export class NgErrorMessenger implements FormNgErrorMessenger {
   getMessagesFromControlErrors(errors: { [key: string]: any }): string[] {
     const errorMessages = [];
     if (typeof errors !== 'object') {

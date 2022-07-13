@@ -8,7 +8,7 @@ import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.mo
 import {FormModule} from './modules/form/form.module';
 import {BootstrapPaginationTableComponent} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 import {EventListenerModule} from './modules/event-listener/event-listener.module';
-import {SpinnerModule} from './modules/spinner/spinner.module';
+import {SpinnerModule} from './modules/loading/spinner.module';
 
 
 /** Laravel */
@@ -50,15 +50,14 @@ export * from './lib/utils/string-or-number-type';
  */
 /** Form */
 export {BaseFormHelperFactory} from './modules/form/lib/base-form-helper-factory';
-export {LaravelHttpErrorMessage} from './modules/form/lib/plugin/laravel-http-error-message';
-export {NgErrorMessager} from './modules/form/lib/plugin/ng-error-messager';
-export {NgxSpinnerLoading} from './modules/form/lib/plugin/ngx-spinner-loading';
+export {LaravelHttpErrorMessenger} from './modules/form/lib/plugin/laravel-http-error-messenger';
+export {NgErrorMessenger} from './modules/form/lib/plugin/ng-error-messenger';
 export {SweetalertEnding} from './modules/form/lib/plugin/sweetalert-ending';
 export {FormEnding} from './modules/form/lib/form-ending';
 export {FormHelper} from './modules/form/lib/form-helper';
-export {FormHttpErrorMessager} from './modules/form/lib/form-http-error-messager';
-export {FormLoading} from './modules/form/lib/form-loading';
-export {FormNgErrorMessager} from './modules/form/lib/form-ng-error-messager';
+export {FormHttpErrorMessenger} from './modules/form/lib/form-http-error-messenger';
+export {LoadingController} from './modules/loading/lib/loading-controller';
+export {FormNgErrorMessenger} from './modules/form/lib/form-ng-error-messenger';
 export {selectFirstOne} from './modules/form/lib/select-first-one';
 
 export {RequiredLabelDirective} from './modules/form/directives/required-label.directive';
@@ -99,8 +98,7 @@ export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.mo
 
 /** Spinner */
 export {SpinnerService} from './modules/spinner/service/spinner.service';
-export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
-export {SpinnerModule} from './modules/spinner/spinner.module';
+export {SpinnerModule} from './modules/loading/spinner.module';
 
 /** Event Listener */
 export {PopupWindow} from './modules/event-listener/lib/popup-window';

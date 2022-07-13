@@ -1,35 +1,34 @@
 import {FormGroup} from '@angular/forms';
-import {NgxSpinnerService} from 'ngx-spinner';
 import {FormHelper} from './form-helper';
-import {FormLoading} from './form-loading';
-import {NgxSpinnerLoading} from './plugin/ngx-spinner-loading';
-import {FormHttpErrorMessager} from './form-http-error-messager';
-import {LaravelHttpErrorMessage} from './plugin/laravel-http-error-message';
+import {LoadingController} from '../../loading/lib/loading-controller';
+import {FormHttpErrorMessenger} from './form-http-error-messenger';
+import {LaravelHttpErrorMessenger} from './plugin/laravel-http-error-messenger';
 import {FormEnding} from './form-ending';
 import {SweetalertEnding} from './plugin/sweetalert-ending';
-import {FormNgErrorMessager} from './form-ng-error-messager';
-import {NgErrorMessager} from './plugin/ng-error-messager';
+import {FormNgErrorMessenger} from './form-ng-error-messenger';
+import {NgErrorMessenger} from './plugin/ng-error-messenger';
+import {BlockLoadingService} from '../../loading/service/block-loading.service';
 
 export class BaseFormHelperFactory {
 
-  protected loading: FormLoading;
+  protected loading: LoadingController;
   protected ending: FormEnding<unknown>;
-  protected ngMessager: FormNgErrorMessager;
-  protected errorMessager: FormHttpErrorMessager;
+  protected ngMessenger: FormNgErrorMessenger;
+  protected errorMessenger: FormHttpErrorMessenger;
 
-  constructor(protected readonly spinner: NgxSpinnerService) {
-    this.loading = new NgxSpinnerLoading(spinner);
+  constructor(protected readonly loadingService: BlockLoadingService) {
+    this.loading = loadingService.loading;
     this.ending = new SweetalertEnding();
-    this.ngMessager = new NgErrorMessager();
-    this.errorMessager = new LaravelHttpErrorMessage();
+    this.ngMessenger = new NgErrorMessenger();
+    this.errorMessenger = new LaravelHttpErrorMessenger();
   }
 
   createFormHelper(form: FormGroup) {
     return new FormHelper(
       this.loading,
       this.ending,
-      this.ngMessager,
-      this.errorMessager,
+      this.ngMessenger,
+      this.errorMessenger,
       form,
     );
   }
