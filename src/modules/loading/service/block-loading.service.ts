@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FormLoading} from 'mw2021-library';
+import {LoadingController} from '../lib/loading-controller';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import {FormLoading} from 'mw2021-library';
 export class BlockLoadingService {
 
   private _isShow = true;
-  private _loading: FormLoading = {
+  private _loading: LoadingController = {
     start: () => this.start(),
     end: () => this.end()
   };
