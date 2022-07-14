@@ -6,9 +6,11 @@
 import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 import {FormModule} from './modules/form/form.module';
-import {BootstrapPaginationTableComponent} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
+import {
+  BootstrapPaginationTableComponent
+} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 import {EventListenerModule} from './modules/event-listener/event-listener.module';
-import {SpinnerModule} from './modules/loading/spinner.module';
+import {LoadingModule} from './modules/loading/loading.module';
 
 
 /** Laravel */
@@ -56,7 +58,6 @@ export {SweetalertEnding} from './modules/form/lib/plugin/sweetalert-ending';
 export {FormEnding} from './modules/form/lib/form-ending';
 export {FormHelper} from './modules/form/lib/form-helper';
 export {FormHttpErrorMessenger} from './modules/form/lib/form-http-error-messenger';
-export {LoadingController} from './modules/loading/lib/loading-controller';
 export {FormNgErrorMessenger} from './modules/form/lib/form-ng-error-messenger';
 export {selectFirstOne} from './modules/form/lib/select-first-one';
 
@@ -96,9 +97,11 @@ export {
 } from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 
-/** Spinner */
-export {SpinnerService} from './modules/spinner/service/spinner.service';
-export {SpinnerModule} from './modules/loading/spinner.module';
+/** Loading */
+export {LoadingService} from './modules/spinner/service/loading.service';
+export {LoadingModule} from './modules/loading/loading.module';
+export {LoadingController} from './modules/loading/lib/loading-controller';
+export {BlockLoadingService} from './modules/loading/service/block-loading.service';
 
 /** Event Listener */
 export {PopupWindow} from './modules/event-listener/lib/popup-window';
