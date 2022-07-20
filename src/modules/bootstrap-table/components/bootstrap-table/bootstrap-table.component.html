@@ -1,48 +1,56 @@
-<div class="d-flex justify-content-between">
+<div class="mw-fade-in header"
+     *ngIf="isShowHeader">
   <div *ngTemplateOutlet="tTotal; context: {$implicit: true}"></div>
-  <ng-container *ngIf="isShowAmount">
+  <ng-container *ngIf="isShowPluginHeader">
     <ng-content select="[tHeader]"></ng-content>
   </ng-container>
 </div>
-<div style="width: 100%;overflow: auto">
-  <table [ngClass]="tableClass" *ngIf="total else emptyTable">
+
+<div class="mw-fade-in head">
+  <table class="table"
+         [ngClass]="total ? tableClass : 'table-striped'">
     <thead>
     <ng-content select="[thead]"></ng-content>
     </thead>
-    <tbody>
+    <tbody *ngIf="total else emptyTbody">
     <ng-content></ng-content>
     </tbody>
-    <tfoot>
-    <ng-content select="[tfoot]"></ng-content>
-    </tfoot>
   </table>
 </div>
-<div class="d-flex justify-content-between">
-  <div></div>
-  <div *ngTemplateOutlet="tTotal"></div>
-</div>
-<ng-template #emptyTable>
-  <table class="table table-striped">
-    <tbody>
-    <tr class="text-center">
-      <td colspan="20">
-        <h4 class="m-0">無資料</h4>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</ng-template>
-<ng-template #tTotal let-showRefreshButton>
-  <div *ngIf="isShowTotal">
-    總計：
-    <span [ngClass]="totalClass">
-      {{ total |number}}
-    </span>
-    筆資料
 
-    <button *ngIf="showRefreshButton && isShowReloadButton" (click)="onReload()"
-            [ngClass]="reloadButtonClass">
-      <em [ngClass]="reloadButtonIconClass"></em>
-    </button>
+<ng-template #emptyTbody>
+  <tbody>
+  <tr class="text-center">
+    <td colspan="20" style="padding-top: 1.5rem">
+      <p class="m-0" style="font-size: 18px">
+        無資料
+      </p>
+    </td>
+  </tr>
+  </tbody>
+</ng-template>
+
+<ng-template #tTotal>
+  <div style="display: flex">
+    <div [ngStyle]="{fontSize: fontSize + 'px'}">
+      總筆數：
+      <span class="badge badge-primary badge-pill"
+            style="border-radius: 0.25rem"
+            [ngStyle]="{height: 1.5 * fontSize + 'px'}">
+      {{ total | number}}
+      </span>
+      <label for="input-filter"
+             class="ml-4 mb-0"
+             style="white-space: nowrap">
+        快速篩選：
+      </label>
+      <input type="text"
+             id="input-filter"
+             class="input-filter"
+             [ngClass]="inputClass"
+             [placeholder]="'篩選資料'"
+             [(ngModel)]="inputFilter"
+             (ngModelChange)="onChangeInputFilter()">
+    </div>
   </div>
 </ng-template>

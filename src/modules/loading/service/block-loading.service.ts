@@ -6,10 +6,10 @@ import {LoadingController} from '../lib/loading-controller';
 })
 export class BlockLoadingService {
 
-  private _isShow = true;
+  private _isShow = false;
   private _loading: LoadingController = {
-    start: () => this.start(),
-    end: () => this.end()
+    start: () => setTimeout(() => this.start(), 1),
+    end: () => setTimeout(() => this.end(), 1)
   };
 
   get isShow() {

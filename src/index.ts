@@ -14,7 +14,7 @@ import {LoadingModule} from './modules/loading/loading.module';
 
 
 /** Laravel */
-export {PaginatorResponse} from '../src/laravel/paginator-response';
+export {PaginatorResponse} from './laravel/paginator-response';
 
 /** check */
 export {checkIsIpv4} from './lib/check/check-is-ipv4';
@@ -98,7 +98,7 @@ export {
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 
 /** Loading */
-export {LoadingService} from './modules/spinner/service/loading.service';
+export {LoadingSubjectService} from './modules/loading/service/loading-subject.service';
 export {LoadingModule} from './modules/loading/loading.module';
 export {LoadingController} from './modules/loading/lib/loading-controller';
 export {BlockLoadingService} from './modules/loading/service/block-loading.service';

@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {debounceTime, finalize, switchMap, tap} from 'rxjs/operators';
 import {UnsubscribeMap} from '../../../lib/rxjs/unsubscribe-map';
-import {BlockLoadingService} from '../../loading/service/block-loading.service';
-import {LoadingController} from '../../loading/lib/loading-controller';
+import {BlockLoadingService} from './block-loading.service';
+import {LoadingController} from '../lib/loading-controller';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoadingService {
+export class LoadingSubjectService {
 
   protected readonly _spinSubject = new Subject();
   protected _customLoading: LoadingController;

@@ -1,26 +1,34 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'mw-bootstrap-table',
   templateUrl: './bootstrap-table.component.html',
   styleUrls: ['./bootstrap-table.component.scss']
 })
-export class BootstrapTableComponent {
+export class BootstrapTableComponent implements OnChanges {
 
-  @Input() isShowTotal = true;
-  @Input() isShowAmount = false;
-  @Input() isShowReloadButton = true;
-  @Input() total = 0;
-  @Input() showAmount = 50;
+  @Input() isShowHeader = true;
+  @Input() isShowPluginHeader = false;
+  @Input() total: string | number = 0;
+  @Input() tableClass = 'table-striped';
+  @Input() items$: Observable<unknown[]>;
+  @Input() fontSize = 14;
+  @Input() inputClass = '';
 
-  @Input() tableClass = 'table table-striped';
-  @Input() totalClass = 'badge badge-primary badge-pill m-1';
-  @Input() reloadButtonClass = 'btn btn-sm btn-primary rounded-pill m-1 ml-2';
-  @Input() reloadButtonIconClass = 'fas fa-redo';
+  @Output() changeInputFilter = new EventEmitter<string>();
 
-  @Output() reload = new EventEmitter();
+  inputFilter: string;
 
-  onReload() {
-    this.reload.emit();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.hasOwnProperty('items$')) {
+      this.items$.subscribe((items) => {
+        this.total = items.length;
+      });
+    }
+  }
+
+  onChangeInputFilter() {
+    this.changeInputFilter.emit(this.inputFilter);
   }
 }

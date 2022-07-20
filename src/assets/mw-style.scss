@@ -10,3 +10,44 @@
     background-image: none;
   }
 }
+
+.mw-fade-in {
+  animation: mw-fade-in 1.8s forwards;
+}
+
+.mw-rotate {
+  animation: mw-rotate 1.5s infinite;
+}
+
+.mw-rotate-hover:hover {
+  animation: mw-rotate 1.5s infinite;
+}
+
+.mw-rotate-parent-hover:hover {
+  & > em {
+    animation: mw-rotate 1.5s infinite;
+  }
+}
+
+@keyframes mw-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+@keyframes mw-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

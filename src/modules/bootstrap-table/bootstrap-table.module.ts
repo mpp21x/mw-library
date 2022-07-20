@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BootstrapTableComponent } from './components/bootstrap-table/bootstrap-table.component';
 import { BootstrapPaginationTableComponent } from './components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     CommonModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    FormsModule
   ],
   exports: [
     BootstrapTableComponent,
