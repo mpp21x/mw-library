@@ -1,5 +1,5 @@
 import {AbstractControl} from '@angular/forms';
-import {SelectOption} from "../../bootstrap-form/lib/bootstrap-select/select-option";
+import {SelectOption} from "../../ngb-form/lib/bootstrap-select/select-option";
 
 export function selectFirstOne(control: AbstractControl, options: SelectOption[]) {
   if (!options.length) {

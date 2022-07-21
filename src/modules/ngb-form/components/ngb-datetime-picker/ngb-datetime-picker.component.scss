@@ -1,4 +1,4 @@
-.custom-datetimepicker {
+.datetime-picker {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -15,13 +15,12 @@
   }
 
   &__calendar {
-    z-index: 2;
+    z-index: 4;
     position: absolute;
-    left: 0;
     width: 250px;
-    border: 1px solid #3E3E3E;
+    border: 1px solid #616279;
     border-radius: 0.25rem;
-    background-color: whitesmoke;
+    background-color: #1E2A3B;
     animation: drop 0.5s forwards;
     display: flex;
     flex-direction: column;
@@ -30,6 +29,13 @@
   }
 }
 
+.fadeInAfterDrop {
+  animation: fadeInAfterDrop 1s forwards;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
 
 @keyframes drop {
   from {
@@ -50,8 +56,4 @@
   100% {
     opacity: 1;
   }
-}
-
-.fadeInAfterDrop {
-  animation: fadeInAfterDrop 1s forwards;
 }

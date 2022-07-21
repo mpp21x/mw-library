@@ -1,0 +1,69 @@
+<div *ngIf="isShowHeader" class="mw-fade-in">
+  <ng-container *ngIf="isShowPluginHeader">
+    <ng-content select="[tHeader]"></ng-content>
+  </ng-container>
+  <div class="header">
+    <div *ngTemplateOutlet="tTotal; context: {$implicit: true}"></div>
+    <div *ngTemplateOutlet="tPagination"></div>
+  </div>
+</div>
+
+<div class="mw-fade-in head">
+  <table class="table"
+         [ngClass]="total ? tableClass : 'table-striped'">
+    <thead>
+    <ng-content select="[thead]"></ng-content>
+    </thead>
+    <tbody *ngIf="total else emptyTbody">
+    <ng-content></ng-content>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #emptyTbody>
+  <tbody>
+  <tr class="text-center">
+    <td colspan="20" style="padding-top: 1.5rem">
+      <p class="m-0" style="font-size: 18px">
+        無資料
+      </p>
+    </td>
+  </tr>
+  </tbody>
+</ng-template>
+
+<ng-template #tTotal>
+  <div style="display: flex">
+    <div [ngStyle]="{fontSize: fontSize + 'px'}">
+      總筆數：
+      <span class="badge badge-primary badge-pill"
+            style="border-radius: 0.25rem"
+            [ngStyle]="{height: 1.5 * fontSize + 'px'}">
+        {{ total | number}}
+      </span>
+      <ng-container *ngIf="isShowInputFilter">
+        <label for="input-filter"
+               class="ml-4 mb-0"
+               style="white-space: nowrap">
+          快速篩選：
+        </label>
+        <input type="text"
+               id="input-filter"
+               class="mw-input-filter"
+               [placeholder]="'篩選資料'"
+               [(ngModel)]="inputFilter"
+               (ngModelChange)="onChangeInputFilter()">
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #tPagination>
+  <mw-ngb-pagination [page]="currentPage"
+                     [fontSize]="fontSize"
+                     [perPage]="perPage"
+                     [dataTotal]="total"
+                     (changePage)="onChangePage($event)">
+  </mw-ngb-pagination>
+</ng-template>

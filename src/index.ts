@@ -3,12 +3,12 @@
  */
 
 
-import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
-import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
+import {BootstrapFormModule} from './modules/ngb-form/bootstrap-form.module';
+import {NgbTableModule} from './modules/ngb-table/ngb-table.module';
 import {FormModule} from './modules/form/form.module';
 import {
-  BootstrapPaginationTableComponent
-} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
+  NgbPaginationTableComponent
+} from './modules/ngb-table/components/ngb-pagination-table/ngb-pagination-table.component';
 import {EventListenerModule} from './modules/event-listener/event-listener.module';
 import {LoadingModule} from './modules/loading/loading.module';
 
@@ -72,30 +72,30 @@ export {ValidatorsCheckDate} from './modules/form/validators/validators-check-da
 export {FormModule} from './modules/form/form.module';
 export {FormSubmitter} from './modules/form/service/form-submitter.service';
 /** Bootstrap Form */
-export {SelectOption} from './modules/bootstrap-form/lib/bootstrap-select/select-option';
-export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
+export {SelectOption} from './modules/ngb-form/lib/bootstrap-select/select-option';
+export {BootstrapInputComponent} from './modules/ngb-form/components/bootstrap-input/bootstrap-input.component';
 export {
   BootstrapSelectComponent
-} from './modules/bootstrap-form/components/bootstrap-select/bootstrap-select.component';
+} from './modules/ngb-form/components/bootstrap-select/bootstrap-select.component';
 export {
   BootstrapTextareaComponent
-} from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';
-export {BaseComponent} from './modules/bootstrap-form/components/base.component';
+} from './modules/ngb-form/components/bootstrap-textarea/bootstrap-textarea.component';
+export {BaseComponent} from './modules/ngb-form/components/base.component';
 export {
   BootstrapInputSelectComponent
-} from './modules/bootstrap-form/components/bootstrap-input-select/bootstrap-input-select.component';
+} from './modules/ngb-form/components/bootstrap-input-select/bootstrap-input-select.component';
 export {
-  BootstrapDatetimePickerComponent
-} from './modules/bootstrap-form/components/bootstrap-datetime-picker/bootstrap-datetime-picker.component';
-export {BootstrapSwapSelectComponent} from './modules/bootstrap-form/components/bootstrap-swap-select/bootstrap-swap-select.component';
+  NgbDatetimePickerComponent
+} from './modules/ngb-form/components/ngb-datetime-picker/ngb-datetime-picker.component';
+export {BootstrapSwapSelectComponent} from './modules/ngb-form/components/bootstrap-swap-select/bootstrap-swap-select.component';
 
-export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
+export {BootstrapFormModule} from './modules/ngb-form/bootstrap-form.module';
 /** Bootstrap Table */
-export {BootstrapTableComponent} from './modules/bootstrap-table/components/bootstrap-table/bootstrap-table.component';
+export {NgbTableComponent} from './modules/ngb-table/components/ngb-table/ngb-table.component';
 export {
-  BootstrapPaginationTableComponent
-} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
-export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
+  NgbPaginationTableComponent
+} from './modules/ngb-table/components/ngb-pagination-table/ngb-pagination-table.component';
+export {NgbTableModule} from './modules/ngb-table/ngb-table.module';
 
 /** Loading */
 export {LoadingSubjectService} from './modules/loading/service/loading-subject.service';

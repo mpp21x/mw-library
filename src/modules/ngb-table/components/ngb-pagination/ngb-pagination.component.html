@@ -1,0 +1,51 @@
+<ngb-pagination size="sm"
+                class="mw-pagination"
+                [collectionSize]="dataTotal"
+                [(page)]="page"
+                [pageSize]="perPage"
+                (pageChange)="onChangePage($event)">
+  <ng-template ngbPaginationPrevious>
+    <em class="fas fa-chevron-circle-left"
+        #tPrevious
+        *ngIf="page !== 1"
+        [ngStyle]="{color: color}"
+        (mouseleave)="tPrevious.style.color = color"
+        (mouseover)="tPrevious.style.color = hoverColor"></em>
+  </ng-template>
+  <ng-template ngbPaginationNext>
+    <em class="fas fa-chevron-circle-right"
+        #tNext
+        *ngIf="!isLastPage"
+        [ngStyle]="{color: color}"
+        (mouseleave)="tNext.style.color = color"
+        (mouseover)="tNext.style.color = hoverColor"></em>
+  </ng-template>
+  <ng-template ngbPaginationPages>
+    <li *ngIf="lastPage > 0">
+      <div class="form-group d-flex align-items-center flex-nowrap mb-0">
+        <label
+          id="paginationInputLabel"
+          for="paginationInput"
+          class="col-form-label mr-2 ml-1 text-nowrap">
+          目前頁數 :
+        </label>
+        <input #i
+               type="text"
+               inputmode="numeric"
+               pattern="[0-9]*"
+               class="form-control"
+               style="border-radius: 0.25rem;margin-bottom: 2px"
+               id="paginationInput"
+               [value]="page"
+               [formControl]="pageInputControl"
+               [ngStyle]="{
+               width: pageInputWidth + 'px',
+               height: (2 * fontSize) - 2 + 'px',
+               fontSize: fontSize + 'px'}"
+               (blur)="onChangePage(i.value)"
+               (input)="formatInput($any($event).target)">
+        <span id="paginationDescription" class="col-form-label text-nowrap px-2">， 共 {{lastPage | number}} 頁</span>
+      </div>
+    </li>
+  </ng-template>
+</ngb-pagination>

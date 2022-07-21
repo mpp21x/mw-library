@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'mw-bootstrap-table',
-  templateUrl: './bootstrap-table.component.html',
-  styleUrls: ['./bootstrap-table.component.scss']
+  selector: 'mw-ngb-table',
+  templateUrl: './ngb-table.component.html',
+  styleUrls: ['./ngb-table.component.scss']
 })
-export class BootstrapTableComponent implements OnChanges {
+export class NgbTableComponent implements OnChanges {
 
   @Input() isShowHeader = true;
   @Input() isShowPluginHeader = false;

@@ -1,7 +1,7 @@
-<div #tDatetimePicker (mousedown)="$event.stopPropagation()" (dblclick)="$event.stopPropagation()">
-  <label class="custom-datetimepicker">
+<div (mousedown)="$event.stopPropagation()"
+     (dblclick)="$event.stopPropagation()">
+  <label class="datetime-picker">
     <span class="mb-0 text-danger"
-          style="font-size: 80%;margin-top: 0.25rem"
           *ngIf="formControl.invalid">
       請輸入正確格式({{format}})
     </span>
@@ -13,24 +13,31 @@
            maxlength="19"
            [placeholder]="'輸入格式：' + format"
            [formControl]="formControl"
+           [ngStyle]="{borderRadius: borderRadius}"
            (click)="expand($event)">
 
-    <span class="custom-datetimepicker__calendar"
-          style="color: black"
-         [ngStyle]="{top: formControl.valid ? '38px' : '60px'}"
+
+    <div #tCalendar
+         class="datetime-picker__calendar"
+         [ngStyle]="{
+            top: formControl.valid ? '38px' : '60px',
+            right: isStart ? 'unset' : '0',
+            left: isStart ? '0' : 'unset'
+         }"
          [hidden]="!isExpand">
       <ngb-datepicker class="fadeInAfterDrop"
+                      style="border: 1px solid #616279"
                       #tNgbDatepicker
                       [(ngModel)]="ngbDate"
                       (ngModelChange)="pickDatetime()">
       </ngb-datepicker>
       <ngb-timepicker class="mt-2 fadeInAfterDrop"
-                      size="small"
+                      *ngIf="format === MOMENT_YYYYMMDDHHMMSS"
                       [(ngModel)]="ngbTime"
                       (ngModelChange)="pickDatetime()"
                       [seconds]="true"
                       [spinners]="false">
       </ngb-timepicker>
-    </span>
+    </div>
   </label>
 </div>

@@ -1,0 +1,17 @@
+.table-hover::ng-deep {
+  tbody tr:hover {
+    background-color: #3e3e3e88;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 22px;
+  margin: 0.75rem 0;
+}
+
+.head {
+  width: 100%;
+  overflow: auto;
+}

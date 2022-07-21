@@ -7,7 +7,7 @@ import {BootstrapSelectComponent} from './components/bootstrap-select/bootstrap-
 import {BootstrapTextareaComponent} from './components/bootstrap-textarea/bootstrap-textarea.component';
 import {BaseComponent} from './components/base.component';
 import {BootstrapInputSelectComponent} from './components/bootstrap-input-select/bootstrap-input-select.component';
-import {BootstrapDatetimePickerComponent} from './components/bootstrap-datetime-picker/bootstrap-datetime-picker.component';
+import {NgbDatetimePickerComponent} from './components/ngb-datetime-picker/ngb-datetime-picker.component';
 
 import {NgbDatepickerModule, NgbTimepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/bootstrap-swap-select.component';
@@ -20,7 +20,7 @@ import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/b
     BootstrapSelectComponent,
     BootstrapTextareaComponent,
     BootstrapInputSelectComponent,
-    BootstrapDatetimePickerComponent,
+    NgbDatetimePickerComponent,
     BootstrapSwapSelectComponent
   ],
   imports: [
@@ -38,7 +38,7 @@ import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/b
     BootstrapSelectComponent,
     BootstrapTextareaComponent,
     BootstrapInputSelectComponent,
-    BootstrapDatetimePickerComponent,
+    NgbDatetimePickerComponent,
     BootstrapSwapSelectComponent
   ]
 })
