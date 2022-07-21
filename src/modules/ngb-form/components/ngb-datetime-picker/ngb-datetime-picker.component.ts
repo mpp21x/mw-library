@@ -14,7 +14,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {NgbDatepicker, NgbDatepickerI18n, NgbDateStruct, NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
-import moment from 'moment';
+import * as moment from 'moment';
 import {FormControl} from '@angular/forms';
 import {filter} from 'rxjs/operators';
 import {PopupWindow} from '../../../event-listener/lib/popup-window';
@@ -62,10 +62,7 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
   }
 
   ngOnInit(): void {
-    this.formControl = new FormControl(
-      moment().format(this.format),
-      [ValidatorsCheckDate(this.format)]
-    );
+    this.initFormControl();
     const formControl = this.formControl;
     this.setNgbDatetimePicker(this.formControl.value);
 
@@ -89,6 +86,7 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.hasOwnProperty('timestamp') && this.timestamp) {
+      this.initFormControl();
       this.formControl.setValue(this.timestamp);
     }
   }
@@ -136,5 +134,14 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
 
   private markForCheck() {
     setTimeout(() => this.changeDetectorRef.markForCheck());
+  }
+
+  private initFormControl() {
+    if (!this.formControl) {
+      this.formControl = new FormControl(
+        moment().format(this.format),
+        [ValidatorsCheckDate(this.format)]
+      );
+    }
   }
 }
