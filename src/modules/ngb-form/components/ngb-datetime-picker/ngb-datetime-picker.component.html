@@ -23,6 +23,7 @@
             right: isStart ? 'unset' : '0',
             left: isStart ? '0' : 'unset'
          }"
+         [ngClass]="format === MOMENT_YYYYMMDDHHMMSS ? 'drop' : 'dropWithoutNgbTime'"
          [hidden]="!isExpand">
       <ngb-datepicker class="fadeInAfterDrop"
                       style="border: 1px solid #616279"
