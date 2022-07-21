@@ -14,7 +14,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {NgbDatepicker, NgbDatepickerI18n, NgbDateStruct, NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
+import moment from 'moment';
 import {FormControl} from '@angular/forms';
 import {filter} from 'rxjs/operators';
 import {PopupWindow} from '../../../event-listener/lib/popup-window';
