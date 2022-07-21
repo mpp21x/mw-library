@@ -35,6 +35,7 @@ export {Paginator} from './lib/paginator/paginator';
 /** rxjs */
 export {UnsubscribeMap} from './lib/rxjs/unsubscribe-map';
 export {unsubscribe} from './lib/rxjs/unsubscribe';
+export {cleanSubscriptionToUnsub} from './lib/rxjs/clean-subscription-to-unsub';
 /** utils */
 export {escapeHtml} from './lib/utils/escape-html';
 export {fillZeroWhenLessThanTen} from './lib/utils/fill-zero-when-less-than-ten';
@@ -46,7 +47,9 @@ export {nestedPropIsExists} from './lib/utils/nested-prop-is-exists';
 export {numberFormat} from './lib/utils/number-format';
 export {prettyJsonString} from './lib/utils/pretty-json-string';
 export {randomString} from './lib/utils/random-string';
-export * from './lib/utils/string-or-number-type';
+export {PAGE_REGEX} from './lib/utils/page-regex';
+export {StringOrNumberType} from './lib/utils/string-or-number-type';
+export * from './lib/date/common-date-format';
 /**
  * modules
  */
@@ -71,7 +74,7 @@ export {ValidatorsCheckDate} from './modules/form/validators/validators-check-da
 
 export {FormModule} from './modules/form/form.module';
 export {FormSubmitter} from './modules/form/service/form-submitter.service';
-/** Bootstrap Form */
+/** Ngb Form */
 export {SelectOption} from './modules/ngb-form/lib/bootstrap-select/select-option';
 export {BootstrapInputComponent} from './modules/ngb-form/components/bootstrap-input/bootstrap-input.component';
 export {
@@ -90,8 +93,9 @@ export {
 export {BootstrapSwapSelectComponent} from './modules/ngb-form/components/bootstrap-swap-select/bootstrap-swap-select.component';
 
 export {BootstrapFormModule} from './modules/ngb-form/bootstrap-form.module';
-/** Bootstrap Table */
+/** Ngb Table */
 export {NgbTableComponent} from './modules/ngb-table/components/ngb-table/ngb-table.component';
+export {NgbPaginationComponent} from './modules/ngb-table/components/ngb-pagination/ngb-pagination.component';
 export {
   NgbPaginationTableComponent
 } from './modules/ngb-table/components/ngb-pagination-table/ngb-pagination-table.component';

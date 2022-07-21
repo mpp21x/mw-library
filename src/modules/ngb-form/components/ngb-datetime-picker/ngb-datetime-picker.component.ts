@@ -41,7 +41,7 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
 
   ngbDate: NgbDateStruct;
   ngbTime: NgbTimeStruct;
-  readonly formControl: FormControl;
+  formControl: FormControl;
   readonly MOMENT_YYYYMMDDHHMMSS = MOMENT_YYYYMMDDHHMMSS;
 
   @ViewChild('tCalendar', {static: true}) tCalendar: ElementRef<HTMLDivElement>;
@@ -59,13 +59,13 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
       month => ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'][month - 1];
     ngbDatepickerI18n.getWeekdayLabel =
       weekday => ['一', '二', '三', '四', '五', '六', '日'][weekday - 1];
+  }
+
+  ngOnInit(): void {
     this.formControl = new FormControl(
       moment().format(this.format),
       [ValidatorsCheckDate(this.format)]
     );
-  }
-
-  ngOnInit(): void {
     const formControl = this.formControl;
     this.setNgbDatetimePicker(this.formControl.value);
 
@@ -98,8 +98,9 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
   }
 
   pickDatetime() {
-    const value =
-      `${this.ngbDate.year}-${fillZeroWhenLessThanTen(this.ngbDate.month)}-${fillZeroWhenLessThanTen(this.ngbDate.day)} ${fillZeroWhenLessThanTen(this.ngbTime.hour)}:${fillZeroWhenLessThanTen(this.ngbTime.minute)}:${fillZeroWhenLessThanTen(this.ngbTime.second)}`;
+    const value = this.format === MOMENT_YYYYMMDDHHMMSS ?
+      `${this.ngbDate.year}-${fillZeroWhenLessThanTen(this.ngbDate.month)}-${fillZeroWhenLessThanTen(this.ngbDate.day)} ${fillZeroWhenLessThanTen(this.ngbTime.hour)}:${fillZeroWhenLessThanTen(this.ngbTime.minute)}:${fillZeroWhenLessThanTen(this.ngbTime.second)}` :
+      `${this.ngbDate.year}-${fillZeroWhenLessThanTen(this.ngbDate.month)}-${fillZeroWhenLessThanTen(this.ngbDate.day)}`;
     this.formControl.setValue(value);
     this.markForCheck();
   }
@@ -107,7 +108,6 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
   setNgbDatetimePicker(value: string) {
     const datetime = value.split(' ');
     const date = datetime[0].split('-');
-    const time = datetime[1].split(':');
 
     this.ngbDate = {
       year: +date[0],
@@ -117,11 +117,14 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
 
     this.tNgbDatepicker.navigateTo(this.ngbDate);
 
-    this.ngbTime = {
-      hour: +time[0],
-      minute: +time[1],
-      second: +time[2]
-    };
+    if (datetime.length > 1) {
+      const time = datetime[1]?.split(':');
+      this.ngbTime = {
+        hour: +time[0],
+        minute: +time[1],
+        second: +time[2]
+      };
+    }
     this.markForCheck();
   }
 
