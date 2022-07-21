@@ -1,23 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgbTableComponent } from './components/ngb-table/ngb-table.component';
-import { NgbPaginationTableComponent } from './components/ngb-pagination-table/ngb-pagination-table.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NgbTableComponent} from './components/ngb-table/ngb-table.component';
+import {NgbPaginationTableComponent} from './components/ngb-pagination-table/ngb-pagination-table.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbPaginationComponent} from './components/ngb-pagination/ngb-pagination.component';
 
 
-
 @NgModule({
-    declarations: [
-        NgbTableComponent,
-        NgbPaginationTableComponent,
-        NgbPaginationComponent
-    ],
+  declarations: [
+    NgbTableComponent,
+    NgbPaginationTableComponent,
+    NgbPaginationComponent
+  ],
   imports: [
     CommonModule,
     NgbPaginationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     NgbTableComponent,
@@ -25,4 +25,5 @@ import {NgbPaginationComponent} from './components/ngb-pagination/ngb-pagination
     NgbPaginationComponent
   ]
 })
-export class NgbTableModule { }
+export class NgbTableModule {
+}

@@ -12,6 +12,7 @@ export class NgbPaginationTableComponent {
   @Input() currentPage = 1;
   @Input() total = 0;
   @Input() tableClass = 'table-striped';
+  @Input() inputClass = '';
   @Input() isShowHeader = true;
   @Input() isShowInputFilter = true;
   @Input() isShowPluginHeader = false;

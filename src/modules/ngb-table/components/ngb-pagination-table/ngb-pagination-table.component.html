@@ -50,6 +50,7 @@
         <input type="text"
                id="input-filter"
                class="mw-input-filter"
+               [ngClass]="inputClass"
                [placeholder]="'篩選資料'"
                [(ngModel)]="inputFilter"
                (ngModelChange)="onChangeInputFilter()">
