@@ -1,0 +1,37 @@
+<div class="d-flex flex-row justify-content-end align-items-end">
+  <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
+          (click)="daysAgo(1)">1 D
+  </button>
+  <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
+          (click)="daysAgo(7)">7 D
+  </button>
+  <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
+          (click)="daysAgo(30)">30 D
+  </button>
+
+  <div>
+    <div class="input-group d-flex m-0 align-items-end">
+      <mw-ngb-datetime-picker
+        [borderRadius]="'0.25rem 0 0 0.25rem'"
+        [isStart]="true"
+        [format]="format"
+        [timestamp]="startDateTime"
+        (datetimeChange)="onChangeDatetime($event, 'start')">
+      </mw-ngb-datetime-picker>
+
+      <span class="input-group-text text-primary range-icon">
+        <em class="fas fa-arrow-right"></em>
+      </span>
+
+      <mw-ngb-datetime-picker
+        [borderRadius]="'0 0.25rem 0.25rem 0'"
+        [isStart]="false"
+        [format]="format"
+        [timestamp]="endDateTime"
+        (datetimeChange)="onChangeDatetime($event, 'end')">
+      </mw-ngb-datetime-picker>
+    </div>
+  </div>
+
+
+</div>

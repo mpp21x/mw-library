@@ -11,6 +11,7 @@ import {NgbDatetimePickerComponent} from './components/ngb-datetime-picker/ngb-d
 
 import {NgbDatepickerModule, NgbTimepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/bootstrap-swap-select.component';
+import {NgbDatetimeFilterComponent} from './components/ngb-datetime-filter/ngb-datetime-filter.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/b
     BootstrapTextareaComponent,
     BootstrapInputSelectComponent,
     NgbDatetimePickerComponent,
-    BootstrapSwapSelectComponent
+    BootstrapSwapSelectComponent,
+    NgbDatetimeFilterComponent
   ],
   imports: [
     CommonModule,
@@ -39,8 +41,9 @@ import {BootstrapSwapSelectComponent} from './components/bootstrap-swap-select/b
     BootstrapTextareaComponent,
     BootstrapInputSelectComponent,
     NgbDatetimePickerComponent,
-    BootstrapSwapSelectComponent
+    BootstrapSwapSelectComponent,
+    NgbDatetimeFilterComponent
   ]
 })
-export class BootstrapFormModule {
+export class MwNgbFormModule {
 }

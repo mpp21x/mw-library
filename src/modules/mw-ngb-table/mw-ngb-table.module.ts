@@ -25,5 +25,5 @@ import {NgbPaginationComponent} from './components/ngb-pagination/ngb-pagination
     NgbPaginationComponent
   ]
 })
-export class NgbTableModule {
+export class MwNgbTableModule {
 }

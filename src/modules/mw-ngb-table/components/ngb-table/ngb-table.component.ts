@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'mw-ngb-table',
+  selector: 'mw-mw-ngb-table',
   templateUrl: './ngb-table.component.html',
   styleUrls: ['./ngb-table.component.scss']
 })
