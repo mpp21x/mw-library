@@ -16,7 +16,7 @@ import {
 import {NgbDatepicker, NgbDatepickerI18n, NgbDateStruct, NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import {FormControl} from '@angular/forms';
-import {filter} from 'rxjs/operators';
+import {filter, tap} from 'rxjs/operators';
 import {PopupWindow} from '../../../event-listener/lib/popup-window';
 import {GlobalClickEventListener} from '../../../event-listener/lib/global-click-event-listener';
 import {ValidatorsCheckDate} from '../../../form/validators/validators-check-date';
@@ -37,7 +37,7 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
   @Input() borderRadius: string;
   @Input() isStart: boolean;
 
-  @Output() datetimeChange = new EventEmitter<string>();
+  @Output() datetimeChange = new EventEmitter<string | boolean>();
 
   ngbDate: NgbDateStruct;
   ngbTime: NgbTimeStruct;
@@ -69,6 +69,11 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
     this.subscribeClick(this.tCalendar);
     this._unsubscribeMap.multiSet({
       'value-change': formControl.valueChanges.pipe(
+        tap((value: string) => {
+          if (!moment(value, this.format, true).isValid()) {
+            this.datetimeChange.emit(false);
+          }
+        }),
         filter((value: string) => moment(value, this.format, true).isValid()),
       ).subscribe((value) => {
         if (!formControl.valid) {
