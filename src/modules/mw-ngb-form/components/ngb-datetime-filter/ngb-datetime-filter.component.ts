@@ -5,7 +5,7 @@ import {IDatetimeEvent} from '../../lib/ngb-datetime-filter/i-datetime-event';
 
 
 @Component({
-  selector: 'mw-ngb-ngb-datetime-filter',
+  selector: 'mw-ngb-datetime-filter',
   templateUrl: './ngb-datetime-filter.component.html',
   styleUrls: ['./ngb-datetime-filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
