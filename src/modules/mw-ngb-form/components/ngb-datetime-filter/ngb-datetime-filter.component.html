@@ -1,13 +1,15 @@
 <div class="d-flex flex-row justify-content-end align-items-end">
-  <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
-          (click)="daysAgo(1)">1 D
-  </button>
-  <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
-          (click)="daysAgo(7)">7 D
-  </button>
-  <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
-          (click)="daysAgo(30)">30 D
-  </button>
+  <ng-container *ngIf="!hasMaxRange">
+    <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
+            (click)="daysAgo(1)">1 D
+    </button>
+    <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
+            (click)="daysAgo(7)">7 D
+    </button>
+    <button class="btn btn-outline-primary text-white m-0 mr-1 days-ago-btn"
+            (click)="daysAgo(30)">30 D
+    </button>
+  </ng-container>
 
   <div>
     <div class="input-group d-flex m-0 align-items-end">
