@@ -21,6 +21,9 @@ export class NgbDatetimeFilterComponent {
 
   @Output() changeDatetime = new EventEmitter<IDatetimeEvent>();
 
+  startAutoCloseTrig = 0;
+  endAutoCloseTrig = 0;
+
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {
@@ -68,9 +71,15 @@ export class NgbDatetimeFilterComponent {
     this.changeDetectorRef.markForCheck();
   }
 
+  autoCloseAnother(type: 'start' | 'end') {
+    if (type === 'start') {
+      this.endAutoCloseTrig += 1;
+    } else {
+      this.startAutoCloseTrig += 1;
+    }
+  }
 
   get hasMaxRange(): boolean {
     return !!this.maxRange?.value;
   }
-
 }

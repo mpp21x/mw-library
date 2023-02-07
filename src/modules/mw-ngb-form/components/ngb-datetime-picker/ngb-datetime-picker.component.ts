@@ -36,8 +36,10 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
   @Input() format: 'YYYY-MM-DD HH:mm:ss' | 'YYYY-MM-DD' = MOMENT_YYYYMMDDHHMMSS;
   @Input() borderRadius: string;
   @Input() isStart: boolean;
+  @Input() closeTrigger = 0;
 
   @Output() datetimeChange = new EventEmitter<string | boolean>();
+  @Output() autoClose = new EventEmitter<void>();
 
   ngbDate: NgbDateStruct;
   ngbTime: NgbTimeStruct;
@@ -94,6 +96,9 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
       this.initFormControl();
       this.formControl.setValue(this.timestamp);
     }
+    if (changes.hasOwnProperty('closeTrigger') && !!this.closeTrigger) {
+      this.collapse();
+    }
   }
 
   ngOnDestroy(): void {
@@ -129,6 +134,11 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
       };
     }
     this.markForCheck();
+  }
+
+  clickDateTimeInput($event: MouseEvent) {
+    this.expand($event);
+    this.autoClose.emit();
   }
 
   @HostListener('document:keydown.enter', ['$event'])

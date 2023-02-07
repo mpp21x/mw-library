@@ -18,7 +18,9 @@
         [isStart]="true"
         [format]="format"
         [timestamp]="startDateTime"
-        (datetimeChange)="onChangeDatetime($event, 'start')">
+        [closeTrigger]="startAutoCloseTrig"
+        (datetimeChange)="onChangeDatetime($event, 'start')"
+        (autoClose)="autoCloseAnother('start')">
       </mw-ngb-datetime-picker>
 
       <span class="input-group-text text-primary range-icon">
@@ -30,7 +32,9 @@
         [isStart]="false"
         [format]="format"
         [timestamp]="endDateTime"
-        (datetimeChange)="onChangeDatetime($event, 'end')">
+        [closeTrigger]="endAutoCloseTrig"
+        (datetimeChange)="onChangeDatetime($event, 'end')"
+        (autoClose)="autoCloseAnother('end')">
       </mw-ngb-datetime-picker>
     </div>
   </div>
