@@ -1,5 +1,5 @@
 import {FormHttpErrorMessenger} from '../form-http-error-messenger';
-import {FormGroup} from '@angular/forms';
+import {UntypedFormGroup} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 
 export class LaravelHttpErrorMessenger implements FormHttpErrorMessenger {
@@ -16,7 +16,7 @@ export class LaravelHttpErrorMessenger implements FormHttpErrorMessenger {
     return [];
   }
 
-  setMessagesFromHttp(form: FormGroup, res: HttpErrorResponse): void {
+  setMessagesFromHttp(form: UntypedFormGroup, res: HttpErrorResponse): void {
     const errors = res.error.errors as { [key: string]: string[] };
     for (const [fieldName, messages] of Object.entries(errors)) {
       this.map[fieldName] = messages.map((message) => {

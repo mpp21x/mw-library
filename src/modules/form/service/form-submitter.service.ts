@@ -28,6 +28,6 @@ export class FormSubmitter {
 
   observableSubmit<T>(observable: Observable<T>) {
     return observable
-      .pipe(tap(() => this._subject.next()));
+      .pipe(tap(() => this._subject.next(null)));
   }
 }

@@ -1,7 +1,7 @@
-import {FormGroup, ValidationErrors} from '@angular/forms';
+import {UntypedFormGroup, ValidationErrors} from '@angular/forms';
 
 export function ValidatorPasswordMustSame(controlName: string, matchingControlName: string, ) {
-    return (formGroup: FormGroup): ValidationErrors | null => {
+    return (formGroup: UntypedFormGroup): ValidationErrors | null => {
         const passwordControl = formGroup.controls[controlName];
         const passwordConfControl = formGroup.controls[matchingControlName];
 

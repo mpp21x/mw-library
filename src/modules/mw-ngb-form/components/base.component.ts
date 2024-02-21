@@ -1,4 +1,4 @@
-import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormControl, Validators} from '@angular/forms';
 import {Component, Input} from '@angular/core';
 import * as R from 'ramda';
 import {checkHasValidator} from '../../form/validators/check-has-validator';
@@ -18,7 +18,7 @@ export class BaseComponent {
   showLabelIsRequired() {
     if (this.isRequired !== null) {
       return this.isRequired;
-    } else if (!R.is(FormControl, this.getControl())) {
+    } else if (!R.is(UntypedFormControl, this.getControl())) {
       return false;
     } else {
       return checkHasValidator(this.getControl(), Validators.required);
@@ -26,7 +26,7 @@ export class BaseComponent {
   }
 
   getControl() {
-    return this.control as FormControl;
+    return this.control as UntypedFormControl;
   }
 
 

@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import {NgbDatepicker, NgbDatepickerI18n, NgbDateStruct, NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {filter, tap} from 'rxjs/operators';
 import {PopupWindow} from '../../../event-listener/lib/popup-window';
 import {GlobalClickEventListener} from '../../../event-listener/lib/global-click-event-listener';
@@ -43,7 +43,7 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
 
   ngbDate: NgbDateStruct;
   ngbTime: NgbTimeStruct;
-  formControl: FormControl;
+  formControl: UntypedFormControl;
   readonly MOMENT_YYYYMMDDHHMMSS = MOMENT_YYYYMMDDHHMMSS;
 
   @ViewChild('tCalendar', {static: true}) tCalendar: ElementRef<HTMLDivElement>;
@@ -153,7 +153,7 @@ export class NgbDatetimePickerComponent extends PopupWindow implements OnInit, O
 
   private initFormControl() {
     if (!this.formControl) {
-      this.formControl = new FormControl(
+      this.formControl = new UntypedFormControl(
         moment().format(this.format),
         [ValidatorsCheckDate(this.format)]
       );
