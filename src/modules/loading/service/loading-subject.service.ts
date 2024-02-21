@@ -41,7 +41,7 @@ export class LoadingSubjectService {
       switchMap(() => observable),
       finalize(() => {
         setTimeout(() => loading.end(), 500);
-        this._spinSubject.next();
+        this._spinSubject.next(null);
       }),
     );
   }
