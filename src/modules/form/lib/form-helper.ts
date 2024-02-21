@@ -1,4 +1,4 @@
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import * as R from 'ramda';
 import {LoadingController} from '../../loading/lib/loading-controller';
@@ -19,7 +19,7 @@ export class FormHelper {
     protected readonly ending: FormEnding<unknown>,
     protected readonly ngErrorMessenger: NgErrorMessenger,
     protected readonly httpErrorMessenger: FormHttpErrorMessenger,
-    protected readonly _form: FormGroup
+    protected readonly _form: UntypedFormGroup
   ) {
   }
 
@@ -141,17 +141,17 @@ export class FormHelper {
     };
   }
 
-  get form(): FormGroup {
+  get form(): UntypedFormGroup {
     return this._form;
   }
 
   getInnerControl(controlName: string) {
     const controlNames = controlName.split(',');
 
-    function recursiveFn(form: FormGroup, names: string[]) {
+    function recursiveFn(form: UntypedFormGroup, names: string[]) {
       const name = names.shift();
       const result = form.controls[name];
-      return result instanceof FormControl ? result : recursiveFn(result as FormGroup, names);
+      return result instanceof UntypedFormControl ? result : recursiveFn(result as UntypedFormGroup, names);
     }
 
     return recursiveFn(this._form, controlNames);

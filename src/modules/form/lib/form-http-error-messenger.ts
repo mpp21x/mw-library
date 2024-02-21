@@ -1,4 +1,4 @@
-import {FormGroup} from '@angular/forms';
+import {UntypedFormGroup} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
 
 export interface FormHttpErrorMessenger {
@@ -7,5 +7,5 @@ export interface FormHttpErrorMessenger {
 
   clean(): void;
 
-  setMessagesFromHttp(form: FormGroup, res: HttpErrorResponse): void;
+  setMessagesFromHttp(form: UntypedFormGroup, res: HttpErrorResponse): void;
 }

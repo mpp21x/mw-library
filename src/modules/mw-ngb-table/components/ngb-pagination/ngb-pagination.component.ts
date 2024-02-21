@@ -10,7 +10,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
 import {PAGE_REGEX} from '../../../../lib/utils/page-regex';
 
@@ -30,7 +30,7 @@ export class NgbPaginationComponent implements OnInit, OnChanges {
   @Input() fontSize: number;
   @Output() changePage = new EventEmitter<number>();
 
-  pageInputControl = new FormControl(1);
+  pageInputControl = new UntypedFormControl(1);
 
   private _lastPage: number;
   private _isLastPage: boolean;

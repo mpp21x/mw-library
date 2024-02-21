@@ -1,7 +1,7 @@
-import {FormControl, ValidatorFn} from '@angular/forms';
+import {UntypedFormControl, ValidatorFn} from '@angular/forms';
 import * as R from 'ramda';
 
-export function checkHasValidator(control: FormControl, validatorFn: ValidatorFn) {
+export function checkHasValidator(control: UntypedFormControl, validatorFn: ValidatorFn) {
   if (!control || !R.has('_rawValidators', control)) {
     return false;
   }

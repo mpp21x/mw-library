@@ -1,6 +1,6 @@
-import {FormGroup, ValidationErrors} from '@angular/forms';
+import {UntypedFormGroup, ValidationErrors} from '@angular/forms';
 
-export function showFormErrors(form: FormGroup) {
+export function showFormErrors(form: UntypedFormGroup) {
   Object.keys(form.controls).forEach(key => {
     const controlErrors: ValidationErrors = form.get(key).errors;
     if (controlErrors != null) {

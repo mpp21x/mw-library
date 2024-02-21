@@ -1,7 +1,7 @@
-import {FormControl, FormGroup, ValidationErrors} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, ValidationErrors} from '@angular/forms';
 import {checkIsIpv4} from '../../../lib/check/check-is-ipv4';
 
-export function ValidatorIpv4(control: FormGroup & FormControl): ValidationErrors | null {
+export function ValidatorIpv4(control: UntypedFormGroup & UntypedFormControl): ValidationErrors | null {
   if (!control.value) {
     return;
   }

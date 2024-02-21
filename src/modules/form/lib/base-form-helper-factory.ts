@@ -1,4 +1,4 @@
-import {FormGroup} from '@angular/forms';
+import {UntypedFormGroup} from '@angular/forms';
 import {FormHelper} from './form-helper';
 import {LoadingController} from '../../loading/lib/loading-controller';
 import {FormHttpErrorMessenger} from './form-http-error-messenger';
@@ -23,7 +23,7 @@ export class BaseFormHelperFactory {
     this.errorMessenger = new LaravelHttpErrorMessenger();
   }
 
-  createFormHelper(form: FormGroup) {
+  createFormHelper(form: UntypedFormGroup) {
     return new FormHelper(
       this.loading,
       this.ending,
